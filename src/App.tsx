@@ -239,26 +239,38 @@ function App() {
       </header>
 
       {/* Navigation tabs */}
-      <nav className="nav-tabs">
+      <nav className="nav-tabs" role="tablist" aria-label="Main Navigation">
         <button 
+          id="nav-tab-dashboard"
+          role="tab"
+          aria-selected={activeTab === 'dashboard'}
           className={`nav-btn ${activeTab === 'dashboard' ? 'active' : ''}`}
           onClick={() => setActiveTab('dashboard')}
         >
           📊 Dashboard
         </button>
         <button 
+          id="nav-tab-calculator"
+          role="tab"
+          aria-selected={activeTab === 'calculator'}
           className={`nav-btn ${activeTab === 'calculator' ? 'active' : ''}`}
           onClick={() => setActiveTab('calculator')}
         >
           🌱 Calculator
         </button>
         <button 
+          id="nav-tab-offsets"
+          role="tab"
+          aria-selected={activeTab === 'offsets'}
           className={`nav-btn ${activeTab === 'offsets' ? 'active' : ''}`}
           onClick={() => setActiveTab('offsets')}
         >
           🌲 Offset Simulator
         </button>
         <button 
+          id="nav-tab-advisor"
+          role="tab"
+          aria-selected={activeTab === 'advisor'}
           className={`nav-btn ${activeTab === 'advisor' ? 'active' : ''}`}
           onClick={() => setActiveTab('advisor')}
         >

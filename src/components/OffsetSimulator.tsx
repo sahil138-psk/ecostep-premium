@@ -136,11 +136,12 @@ export const OffsetSimulator: React.FC<OffsetSimulatorProps> = ({
               {OFFSET_FACTORS.tree.description}
             </p>
             <div className="offset-control">
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
+              <label htmlFor="offset-trees-input" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', cursor: 'pointer' }}>
                 <span>Amount: <strong>{trees} trees</strong></span>
                 <span className="offset-impact-tag">-{treeImpact.toFixed(0)} kg CO₂e</span>
-              </div>
+              </label>
               <input 
+                id="offset-trees-input"
                 type="range" 
                 className="glowing-slider" 
                 min="0" 
@@ -167,11 +168,12 @@ export const OffsetSimulator: React.FC<OffsetSimulatorProps> = ({
               {OFFSET_FACTORS.solar.description}
             </p>
             <div className="offset-control">
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
+              <label htmlFor="offset-solar-input" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', cursor: 'pointer' }}>
                 <span>Amount: <strong>{solar} kWh</strong></span>
                 <span className="offset-impact-tag">-{solarImpact.toFixed(0)} kg CO₂e</span>
-              </div>
+              </label>
               <input 
+                id="offset-solar-input"
                 type="range" 
                 className="glowing-slider" 
                 min="0" 
@@ -199,11 +201,12 @@ export const OffsetSimulator: React.FC<OffsetSimulatorProps> = ({
               {OFFSET_FACTORS.ocean.description}
             </p>
             <div className="offset-control">
-              <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem' }}>
+              <label htmlFor="offset-ocean-input" style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', cursor: 'pointer' }}>
                 <span>Amount: <strong>{ocean} kg</strong></span>
                 <span className="offset-impact-tag">-{oceanImpact.toFixed(0)} kg CO₂e</span>
-              </div>
+              </label>
               <input 
+                id="offset-ocean-input"
                 type="range" 
                 className="glowing-slider" 
                 min="0" 
@@ -262,14 +265,14 @@ export const OffsetSimulator: React.FC<OffsetSimulatorProps> = ({
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '2rem' }}>
             {savedSuccess && (
-              <p style={{ color: 'var(--color-primary)', fontSize: '0.85rem', textAlign: 'center', fontWeight: 600, animation: 'fadeIn 0.2s' }}>
+              <p id="offset-commit-success-msg" style={{ color: 'var(--color-primary)', fontSize: '0.85rem', textAlign: 'center', fontWeight: 600, animation: 'fadeIn 0.2s' }}>
                 ✨ Portfolio Committed! Profile Updated.
               </p>
             )}
-            <button className="btn-primary" onClick={handleCommit} style={{ background: 'linear-gradient(135deg, var(--color-secondary) 0%, #0891b2 100%)', boxShadow: '0 4px 15px var(--color-secondary-glow)' }}>
+            <button id="commit-offsets-btn" className="btn-primary" onClick={handleCommit} style={{ background: 'linear-gradient(135deg, var(--color-secondary) 0%, #0891b2 100%)', boxShadow: '0 4px 15px var(--color-secondary-glow)' }}>
               🔒 Commit Offsets
             </button>
-            <button className="btn-secondary" onClick={handleReset}>
+            <button id="reset-offsets-btn" className="btn-secondary" onClick={handleReset}>
               Reset Sliders
             </button>
           </div>

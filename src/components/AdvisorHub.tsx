@@ -219,9 +219,11 @@ export const AdvisorHub: React.FC<AdvisorHubProps> = ({
                     </span>
                   ) : (
                     <button 
+                      id={`complete-challenge-btn-${challenge.id}`}
                       className="btn-secondary" 
                       style={{ fontSize: '0.75rem', padding: '0.35rem 0.75rem', borderColor: 'var(--color-primary)' }}
                       onClick={() => onCompleteChallenge(challenge.id, challenge.points, challenge.co2Savings)}
+                      aria-label={`Complete challenge: ${challenge.title}`}
                     >
                       Complete
                     </button>

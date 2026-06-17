@@ -112,10 +112,13 @@ export const LogCalculator: React.FC<LogCalculatorProps> = ({ onAddLog, onAwardX
       </h2>
       
       {/* Category selector */}
-      <div className="calc-tabs">
+      <div className="calc-tabs" role="tablist" aria-label="Calculator Categories">
         {(['transport', 'energy', 'food', 'consumption'] as Category[]).map((tab) => (
           <button
+            id={`calc-tab-btn-${tab}`}
             key={tab}
+            role="tab"
+            aria-selected={activeTab === tab}
             className={`calc-tab-btn ${activeTab === tab ? 'active' : ''}`}
             onClick={() => {
               setActiveTab(tab);
@@ -199,6 +202,7 @@ export const LogCalculator: React.FC<LogCalculatorProps> = ({ onAddLog, onAwardX
               <div style={{ display: 'flex', gap: '0.5rem' }}>
                 {[10, 50, 100, 500, 1000].map(val => (
                   <button 
+                    id={`preset-trans-dist-${val}`}
                     key={val} 
                     type="button" 
                     className="btn-secondary" 
@@ -249,6 +253,7 @@ export const LogCalculator: React.FC<LogCalculatorProps> = ({ onAddLog, onAwardX
               <div style={{ display: 'flex', gap: '0.5rem' }}>
                 {[50, 100, 250, 500, 1000].map(val => (
                   <button 
+                    id={`preset-energy-amount-${val}`}
                     key={val} 
                     type="button" 
                     className="btn-secondary" 
@@ -297,6 +302,7 @@ export const LogCalculator: React.FC<LogCalculatorProps> = ({ onAddLog, onAwardX
               <div style={{ display: 'flex', gap: '0.5rem' }}>
                 {[1, 3, 7, 14, 21].map(val => (
                   <button 
+                    id={`preset-food-meals-${val}`}
                     key={val} 
                     type="button" 
                     className="btn-secondary" 
@@ -347,6 +353,7 @@ export const LogCalculator: React.FC<LogCalculatorProps> = ({ onAddLog, onAwardX
               <div style={{ display: 'flex', gap: '0.5rem' }}>
                 {[1, 2, 5, 10, 20].map(val => (
                   <button 
+                    id={`preset-consum-val-${val}`}
                     key={val} 
                     type="button" 
                     className="btn-secondary" 
@@ -390,7 +397,7 @@ export const LogCalculator: React.FC<LogCalculatorProps> = ({ onAddLog, onAwardX
           </div>
         </div>
 
-        <button type="submit" className="btn-primary">
+        <button id="submit-log-btn" type="submit" className="btn-primary">
           📝 Log Activity
         </button>
       </form>

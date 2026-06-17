@@ -99,7 +99,14 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <div className="split-grid" style={{ gridTemplateColumns: '1.2fr 1.8fr', alignItems: 'center' }}>
             
             {/* Circular Budget Ring */}
-            <div className="score-circle-container">
+            <div 
+              className="score-circle-container"
+              role="progressbar"
+              aria-valuenow={budgetPercentage}
+              aria-valuemin={0}
+              aria-valuemax={100}
+              aria-label="Carbon Budget Gauge"
+            >
               <svg className="score-svg" viewBox="0 0 200 200">
                 <circle className="score-circle-bg" cx="100" cy="100" r={radius} />
                 <circle 
@@ -113,7 +120,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 />
               </svg>
               <div className="score-content">
-                <span className="score-value">{budgetPercentage}%</span>
+                <span id="dashboard-budget-percentage" className="score-value">{budgetPercentage}%</span>
                 <span className="score-label">Monthly Budget</span>
               </div>
             </div>
@@ -149,15 +156,15 @@ export const Dashboard: React.FC<DashboardProps> = ({
           {/* Quick Stats Grid */}
           <div className="metrics-row">
             <div className="metric-item">
-              <span className="metric-value">🌲 {profile.offsetTrees}</span>
+              <span id="metric-trees-planted" className="metric-value">🌲 {profile.offsetTrees}</span>
               <span className="metric-label">Trees Simulated</span>
             </div>
             <div className="metric-item">
-              <span className="metric-value">🛡️ Lvl {profile.level}</span>
+              <span id="metric-guardian-level" className="metric-value">🛡️ Lvl {profile.level}</span>
               <span className="metric-label">Guardian Level</span>
             </div>
             <div className="metric-item">
-              <span className="metric-value">✨ {profile.xp} XP</span>
+              <span id="metric-guardian-xp" className="metric-value">✨ {profile.xp} XP</span>
               <span className="metric-label">Total Points</span>
             </div>
           </div>
@@ -217,7 +224,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             <span>📜</span> Recent Activity
           </h2>
           {logs.length > 0 && (
-            <button className="btn-secondary" onClick={onResetLogs} style={{ fontSize: '0.75rem', padding: '0.35rem 0.65rem' }}>
+            <button id="clear-all-logs-btn" className="btn-secondary" onClick={onResetLogs} style={{ fontSize: '0.75rem', padding: '0.35rem 0.65rem' }}>
               Clear All
             </button>
           )}
@@ -252,9 +259,11 @@ export const Dashboard: React.FC<DashboardProps> = ({
                     <span className="log-co2-label">kg CO₂e</span>
                   </div>
                   <button 
+                    id={`delete-log-btn-${log.id}`}
                     className="btn-delete" 
                     onClick={() => onDeleteLog(log.id)}
                     title="Delete Entry"
+                    aria-label={`Delete log entry for ${log.activityName}`}
                   >
                     ❌
                   </button>
