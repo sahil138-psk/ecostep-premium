@@ -1,0 +1,10 @@
+# Gcloud upload ignore file
+.gcloudignore
+.git
+.gitignore
+node_modules/
+dist/
+tmp/
+C:\Users\sahil\.gemini\antigravity-ide\
+gcloud-temp.zip
+google-cloud-sdk/
